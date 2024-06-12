@@ -53,7 +53,7 @@ export default function HomeScreen() {
       </Pressable>
       {todoList.map((value, index) => (
         <View key={index}>
-          <Text>{value}</Text>
+          <Text>{value}</Text><Button title="delete" onPress={() => setTodoList(prev => prev.filter((_, idx) => idx !== index))} />
         </View>
       ))}
     </>
