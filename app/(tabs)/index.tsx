@@ -22,9 +22,12 @@ export default function HomeScreen() {
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState<string[]>([]);
   function increaseCount() {
-    setTodoList((prev) => [...prev, input]);
+    if(input.trim() !== ""){
+
+      setTodoList((prev) => [...prev, input]);
     console.log(todoList);
-    setInput("")
+  setInput("")
+  }
   }
   return (
     <>
