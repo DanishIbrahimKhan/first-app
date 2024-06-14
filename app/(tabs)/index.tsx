@@ -12,18 +12,20 @@ import { useState } from "react";
 import { Link, router } from "expo-router";
 
 export default function HomeScreen() {
-  var [count, setCount] = useState(0);
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState<string[]>([]);
   function increaseCount() {
-    setCount((count = count + 1));
-    setTodoList((prev) => [...prev, input]);
+    if(input.trim() !== ""){
+
+      setTodoList((prev) => [...prev, input]);
     console.log(todoList);
+  setInput("")
+  }
   }
   return (
     <>
       <ThemedText style={{ marginTop: 40 }} type="title">
-        Todo List
+        Todos List
       </ThemedText>
       <TextInput
         style={{
@@ -34,6 +36,7 @@ export default function HomeScreen() {
           paddingHorizontal: 10,
         }}
         placeholder="add todo"
+        value={input}
         onChangeText={setInput}
       ></TextInput>
       <Button title="add to todo" onPress={increaseCount} />
@@ -45,9 +48,29 @@ export default function HomeScreen() {
       >
         <Text>go</Text>
       </Pressable>
+      <Pressable
+        onPress={() => {
+          router.push("./user");
+        }}
+      >
+        <Text>user</Text>
+      </Pressable>
       {todoList.map((value, index) => (
         <View key={index}>
           <Text>{value}</Text>
+          <View style={{width:80, backgroundColor: 'red', borderRadius: 5 }}>
+            <Button color={"red"} title="×" onPress={() => {
+            let newList = [...todoList]
+            newList.splice(index,1)
+            setTodoList(newList);
+          }} />
+          <Button color={"green"} title="update" onPress={() => {
+            setInput(todoList[index])
+            let newList = [...todoList]
+            newList.splice(index,1)
+            setTodoList(newList);
+          }} />
+            </View>
         </View>
       ))}
     </>
