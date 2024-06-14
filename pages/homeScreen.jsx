@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <Link href="/home" asChild>
       <Pressable>
-        <Text>Home</Text>
+        <Text>Home on the app</Text>
       </Pressable>
     </Link>
   );
