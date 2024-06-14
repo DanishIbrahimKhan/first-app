@@ -4,6 +4,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+////want to see changes at git
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
